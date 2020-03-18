@@ -37,7 +37,7 @@ function canvasClickHandler(ev) {
   if (adding) {
     adding = false;
     canvas.style.cursor = 'not-allowed';
-    drawInfection(x, y, 2);
+    drawInfection(x, y);
 
     infections.push({ x, y })
   } else if (removing) {
@@ -63,7 +63,7 @@ function canvasClickHandler(ev) {
     // iterates over iterable objects (object, array, etc.)
     for (let i of infections) {
       const { x: ix, y: iy } = i;
-      drawInfection(ix, iy, 2);
+      drawInfection(ix, iy);
     }
   }
 
@@ -113,7 +113,7 @@ function clearBtnHandler(ev) {
 }
 
 // canvas functions
-function drawInfection(x, y, r) {
+function drawInfection(x, y, r = 3) {
   ctx.beginPath();
   ctx.ellipse(x, y, r, r, Math.PI / 2.0, 0, Math.PI * 2.0);
   ctx.fill();
