@@ -1,0 +1,32 @@
+/* style.css */
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.title {
+  text-align: center;
+}
+
+.canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  box-shadow: 2px 2px 5px 0px gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.controls > * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
