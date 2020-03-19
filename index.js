@@ -118,3 +118,36 @@ function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (canvasBackground) ctx.drawImage(canvasBackground, 0, 0, canvas.width, canvas.height);
 }
+
+// ajax functions
+function downloadDataPromise() {
+  fetch('https://gist.githubusercontent.com/cgduncan7/9b663fca107b0a00648e551f8f418386/raw/84c9cc45164f95892815016263a11d6814a8f836/infection_data_1.json')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(`Response failed with status: ${response.status}.`);
+    })
+    .then((json) => json.forEach(({ x, y }) => drawInfection(x, y)))
+    .catch((error) => console.warn(error));
+}
+
+async function downloadData() {
+  try {
+    const response = await fetch('https://gist.githubusercontent.com/cgduncan7/9b663fca107b0a00648e551f8f418386/raw/84c9cc45164f95892815016263a11d6814a8f836/infection_data_1.json');
+    
+    if (response.ok) {
+      const infections = await response.json();
+      
+      for (let { x, y } of infections) {
+        drawInfection(x, y);
+      }
+    } else {
+      console.warn(`Response failed with status ${response.status}.`);
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+downloadData();
