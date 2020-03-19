@@ -87,11 +87,6 @@ function uploadBtnHandler() {
   };
 }
 
-function exportCanvas(el) {
-  const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-  el.href = image;
-}
-
 function addBtnHandler() {
   adding = true;
   canvas.style.cursor = 'pointer';
